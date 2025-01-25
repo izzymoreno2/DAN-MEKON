@@ -1,0 +1,43 @@
+﻿<HTML>
+<HEAD>
+<TITLE>Dan Dare 1 & 2</TITLE>
+</HEAD>
+<BODY bgcolor=black link=silver alink=white ondragstart="JavaScript: return false" onselectstart="JavaScript: return false" onload="MoveObjects()">
+</DIV>
+<DIV id=pic0 style="position: relative; left: 5px; top: 25px">
+<IMG name='Mekon0' src='Mekon1.gif' width=18 height=24>
+</DIV>
+<DIV id=pic1 style="position: relative; left: 5px; top: 45px">
+<IMG name='Dan0' src='Dan1.gif' width=22 height=32>
+</DIV>
+<SCRIPT language="JavaScript">
+//Переменные объектов
+DirFileName=new Array("Mekon","Dan");
+xmin=5;
+xmax=document.body.clientWidth-30;
+x=xmin;
+step=1;
+objnum=0;
+
+function MoveObjects()
+{
+x=x+step;
+pic0.style.left=x;
+pic1.style.left=xmax-x;
+if(x>xmax) {document.all["Mekon0"].src='Mekon0.gif';document.all["Dan0"].src='Dan0.gif';step=-1};
+if(x<xmin) {document.all["Mekon0"].src='Mekon1.gif';document.all["Dan0"].src='Dan1.gif';step=1};
+setTimeout("MoveObjects()",25);
+}
+
+function Resize(x)
+{
+xminbrowser=0;
+xmaxbrowser=document.body.clientWidth;
+yminbrowser=0;
+ymaxbrowser=document.body.clientHeight;
+dxImage=Math.round(xmaxbrowser/x);
+dxField=Math.round((xmaxbrowser-dxImage*x)/2);
+}
+</SCRIPT>
+</BODY>
+</HTML>
